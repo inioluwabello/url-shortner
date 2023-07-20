@@ -1,9 +1,9 @@
 
-const Features = () => {
+const Features = ({ isMobile }) => {
     return (
         <section className="features">
             <div className="content">
-                <div className="flex">
+                <div className={`${isMobile ? "" : "flex"}`}>
                     <div className="feature-item">
                         <button className="feature-icon">
                             <img src="/images/icon-brand-recognition.svg" alt="brand=recognition" />
@@ -44,7 +44,9 @@ const Features = () => {
                         </div>
                     </div>
                 </div>
-                <div className="background-rule"></div>
+                <div className="bg-rule-container" style={{height: "10px"}}>
+                    <div className={`background-rule ${isMobile ? "mobile" : ""}`}></div>
+                </div>
             </div>
         </section>
     )

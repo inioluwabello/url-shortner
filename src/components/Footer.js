@@ -1,9 +1,9 @@
 
-const Footer = () => {
+const Footer = ({ isMobile }) => {
     return (
       <footer className="footer">
         <div className="content">
-          <div className="flex">
+          <div className={`${isMobile ? "text-center" : "flex"}`}>
             <div className="footer-logo">Shortly</div>
             <div className="footer-column footer-features">
               <div className="title bold">Features</div>

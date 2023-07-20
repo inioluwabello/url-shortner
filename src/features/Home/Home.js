@@ -8,6 +8,7 @@ import Footer from '../../components/Footer'
 import { useEffect, useState } from 'react'
 import MobileNav from '../../components/mobile/MobileNav'
 import MobileLead from '../../components/mobile/Lead'
+import ShortenedLink from '../../components/ShortenedLink'
 
 const Home = () => {
     const [pageWidth, setPageWidth] = useState(1200);
@@ -38,6 +39,7 @@ const Home = () => {
                     <Lead />
                     <Shortner />
                     <div className="grey-bg">
+                        <ShortenedLink />
                         <Statistics />
                         <Features />
                     </div>
@@ -51,6 +53,13 @@ const Home = () => {
                 <MobileNav />
                 <MobileLead />
                 <Shortner isMobile={pageWidth <= mobileWidth} />
+                <div className="grey-bg">
+                    <ShortenedLink />
+                    <Statistics />
+                    <Features isMobile={pageWidth <= mobileWidth} />
+                </div>
+                <SubFooter isMobile={pageWidth <= mobileWidth} />
+                <Footer isMobile={pageWidth <= mobileWidth} />
             </>}
 
         </section>

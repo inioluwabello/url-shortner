@@ -1,9 +1,12 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { shortenURLAsync } from "../features/url/urlSlice";
 
 const MobileShortner = ({ isMobile }) => {
 
     const [url, setUrl] = useState("")
-    const [showingError, setShowingError] = useState(false)
+    const [showingError, setShowingError] = useState(false);
+    const dispatch = useDispatch();
 
     const handleUrlInput = (e) => {
         setUrl(e.target.value)
@@ -18,6 +21,7 @@ const MobileShortner = ({ isMobile }) => {
         if (!isValid) return;
 
         // shorten url
+        dispatch(shortenURLAsync(url))
     }
 
     const isURLValid = () => {
@@ -36,13 +40,14 @@ const MobileShortner = ({ isMobile }) => {
                         placeholder="Shorten a link here..."
                         onChange={handleUrlInput} />
                     
-                    {showingError && <label className="error-text">Please add a link</label>}
+                    {isMobile && showingError && <label className="error-text">Please add a link</label>}
 
                     <button 
                         className="btn btn-pry shortner-btn"
                         onClick={shortenUrl}
                     >Shorten it!</button>
                 </div>
+                {!isMobile && showingError && <label className="error-text">Please add a link</label>}
             </div>
         </section>
     )
